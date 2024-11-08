@@ -9,6 +9,8 @@ var CityNames = [];
     'use strict';
 	//Ennyit vár, miután betöltődött az oldal:
     setTimeout(InitializeComponents, 5000);
+    let testPlayer = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3');
+testPlayer.play();
 })();
 
 //Azután hajtódnak végre, miután betöltött a játék - Kezdő értékadás:
@@ -151,19 +153,16 @@ function NotifySale(resource) {
     player.play();
 
     // Send a browser notification (ensures permissions are granted)
-    if (Notification.permission === 'granted') {
-        new Notification("Sale Completed", {
-            body: `Resource type ${resource} has been sold successfully!`
-        });
-    } else if (Notification.permission !== 'denied') {
+    if (Notification.permission !== 'granted') {
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
-                new Notification("Sale Completed", {
-                    body: `Resource type ${resource} has been sold successfully!`
-                });
+                new Notification("Test Notification", { body: "This is a test notification" });
             }
         });
+    } else {
+        new Notification("Test Notification", { body: "This is a test notification" });
     }
+    
 }
 
 //========================================================================================================\\
