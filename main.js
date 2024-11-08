@@ -9,8 +9,6 @@ var CityNames = [];
     'use strict';
 	//Ennyit vár, miután betöltődött az oldal:
     setTimeout(InitializeComponents, 5000);
-    let testPlayer = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3');
-testPlayer.play();
 })();
 
 //Azután hajtódnak végre, miután betöltött a játék - Kezdő értékadás:
@@ -94,6 +92,12 @@ async function CheckIfTozsdeIsOpen()
 //Megnézi, hogy van-e üres hely a tőzsdén:
 async function CheckResources()
 {
+    try {
+        let testPlayer = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3');
+testPlayer.play();
+    } catch (error) {
+        console.log(error);
+    }
     await document.getElementsByClassName('gp_page_caption js-page-caption js-page-caption-1')[0].click();
     await sleep(500);
     //Lekéri a nyersanyagmennyiségeket:
