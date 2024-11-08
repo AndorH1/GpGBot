@@ -92,6 +92,7 @@ async function CheckIfTozsdeIsOpen()
 //Megnézi, hogy van-e üres hely a tőzsdén:
 async function CheckResources()
 {
+    NotifySale();
     await document.getElementsByClassName('gp_page_caption js-page-caption js-page-caption-1')[0].click();
     await sleep(500);
     //Lekéri a nyersanyagmennyiségeket:
@@ -119,7 +120,7 @@ async function CheckResources()
 }
 async function SellResources(resource) {
     // Notify sale completion
-    NotifySale(resource);
+    NotifySale();
     var capacity = await document.getElementsByClassName('gp_tab_page js-page js-page-1 game_body')[0].getElementsByClassName('pg_capacity single-progressbar')[0].getElementsByClassName('caption')[0].getElementsByClassName('value_container')[0].getElementsByClassName('curr')[0].innerText;
     if (capacity > parseInt(GM_config.get('TozsdeBot_MinimalResource'))) {
         var res = await document.getElementsByClassName('ui_resources_bar')[0].children[resource].innerText;
@@ -145,7 +146,7 @@ async function SellResources(resource) {
     }
 }
 
-function NotifySale(resource) {
+function NotifySale() {
     // Play a sound notification
     player.src = 'https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3';
     player.play();
