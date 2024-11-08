@@ -147,7 +147,7 @@ async function SellResources(resource) {
 
 function NotifySale(resource) {
     // Define a sound file URL or use `player` for audio notification
-    player.src = 'path/to/sale_complete_sound.mp3';
+    player.src = 'https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3';
     player.play();
 
     // Send a browser notification (ensure permissions are granted)
