@@ -118,6 +118,8 @@ async function CheckResources()
     await document.getElementsByClassName('btn_next_town button_arrow right')[0].click(); //Következő város window_content js-window-content
 }
 async function SellResources(resource) {
+    // Notify sale completion
+    NotifySale(resource);
     var capacity = await document.getElementsByClassName('gp_tab_page js-page js-page-1 game_body')[0].getElementsByClassName('pg_capacity single-progressbar')[0].getElementsByClassName('caption')[0].getElementsByClassName('value_container')[0].getElementsByClassName('curr')[0].innerText;
     if (capacity > parseInt(GM_config.get('TozsdeBot_MinimalResource'))) {
         var res = await document.getElementsByClassName('ui_resources_bar')[0].children[resource].innerText;
@@ -139,8 +141,6 @@ async function SellResources(resource) {
                 await sleep(100);
             }
 
-            // Notify sale completion
-            NotifySale(resource);
         }
     }
 }
