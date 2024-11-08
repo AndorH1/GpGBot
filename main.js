@@ -146,27 +146,26 @@ async function SellResources(resource) {
 }
 
 function NotifySale(resource) {
-    // Define a sound file URL or use `player` for audio notification
+    // Play a sound notification
     player.src = 'https://notificationsounds.com/storage/sounds/file-sounds-1134-open-up.mp3';
     player.play();
 
-    // Send a browser notification (ensure permissions are granted)
+    // Send a browser notification (ensures permissions are granted)
     if (Notification.permission === 'granted') {
         new Notification("Sale Completed", {
-            body: `Resource type ${resource} has been sold successfully!`,
-            icon: 'path/to/icon.png'
+            body: `Resource type ${resource} has been sold successfully!`
         });
     } else if (Notification.permission !== 'denied') {
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 new Notification("Sale Completed", {
-                    body: `Resource type ${resource} has been sold successfully!`,
-                    icon: 'path/to/icon.png'
+                    body: `Resource type ${resource} has been sold successfully!`
                 });
             }
         });
     }
 }
+
 //========================================================================================================\\
 //=======================================[Segéd metódusok]================================================\\
 //Sleep metódus:
